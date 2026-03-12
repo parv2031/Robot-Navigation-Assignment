@@ -1,0 +1,49 @@
+# -------------------------------------------------------------
+# Controller Parameters Configuration
+# -------------------------------------------------------------
+# This YAML file provides configuration parameters for the
+# trajectory controller node.
+#
+# The parameters define the waypoint coordinates that the
+# robot should follow. These waypoints form the initial path
+# which is then:
+#
+#   1. Smoothed by the PathSmoother
+#   2. Converted into a time-parameterized trajectory by the
+#      TrajectoryGenerator
+#   3. Tracked by the PID controller in the ControllerNode
+#
+# The controller reads these parameters at runtime using the
+# ROS2 parameter server.
+# -------------------------------------------------------------
+
+controller_node:
+
+  ros__parameters:
+
+    # ---------------------------------------------------------
+    # Waypoint X Coordinates
+    # ---------------------------------------------------------
+    # Defines the x-coordinates of the navigation waypoints.
+    # Each index corresponds to a waypoint position.
+    #
+    # Example:
+    # waypoint 0 → (0.0, 0.0)
+    # waypoint 1 → (1.0, 1.0)
+    # waypoint 2 → (2.0, 0.0)
+    # ---------------------------------------------------------
+
+    waypoints_x: [0.0, 1.0, -1.0, 3.0, 3.0]
+
+    # ---------------------------------------------------------
+    # Waypoint Y Coordinates
+    # ---------------------------------------------------------
+    # Defines the y-coordinates of the navigation waypoints.
+    # The index must correspond exactly with waypoints_x.
+    #
+    # These waypoints create a zig-zag path that demonstrates
+    # the effectiveness of path smoothing and trajectory
+    # tracking.
+    # ---------------------------------------------------------
+
+    waypoints_y: [0.0, 1.0, 2.0, 3.0, 2.0]
